@@ -1,26 +1,46 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 
-function Person() {
-    const [age, setAge] = useState("");
+function Car() {
+    const [inputs, setInputs] = useState("");
+    // const refName = useRef("");
+
+    const handleChange = (event) => {
+      const {name, value} = event.target;
+      // const value = event.target.value;
+      setInputs(previousValues => ({...previousValues, [name]: [value]}))
+    }
 
     const handleSubmit = () => {
-        if(age >= 18){
-        alert(`You can vote`);
-        } else {
-            alert(`You cannot vote`);
-        }
+      alert("username = " + inputs.username +"\n age = " + inputs.age);
+      // console.log(`username = ${inputs.username} age = ${inputs.age}`)
     }
     
   return (
-    <div>
         <form action="submit" onSubmit={handleSubmit}>
-            <label htmlFor="">Enter your age: </label>
-            <input type="text" onChange={(e) => setAge(e.target.value)} value={age}/>
-            <input type="submit" />
+            {/* <div> */}
+              {/* <input type="text" ref={refName}/> */}
+              <label htmlFor="">Enter your name: 
+                <input 
+                type="text" 
+                name='username' 
+                value={inputs.username || ""} 
+                onChange={handleChange} />
+              </label>
+
+              <label htmlFor="">Enter your age: 
+                <input 
+                type="number" 
+                name='age' 
+                value={inputs.age || ""} 
+                onChange={handleChange} />
+              </label>
+
+              <input type="submit" />
+              {/* <button onClick={handleSubmit}>Submit</button> */}
+            {/* </div> */}
         </form>
-    </div>
   )
 }
 
-export default Person;
+export default Car;
