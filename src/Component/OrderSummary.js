@@ -1,13 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const Home = () => {
+export const OrderSummary = () => {
     const navigate = useNavigate();
   return (
     <>
-        <div>Home page</div>
-        <button onClick={() => navigate('order-summary')}>Confirm Order</button>
+    <div>Order Confirmed!</div>
+    <button onClick={() => navigate(-1)}>Go Back</button>
     </>
   )
 }
-
